@@ -1,16 +1,16 @@
 print("Pacote Class_Musculatura iniciado!")
 
-from .Class_adutores            import Adutores
-from .Class_bracos              import Triceps, Antebraco, Biceps
-from .Class_core                import Abdomen, Lombar
-from .Class_costas              import Costas
-from .Class_flexores_quadril    import FlexoresDoQuadril
-from .Class_gluteo              import Gluteo
-from .Class_manguito            import Manguito
-from .Class_panturrilha         import Panturrilha
-from .Class_peito               import Peito, Ombro
-from .Class_posterior           import PosteriorCoxa
-from .Class_quadriceps          import Quadriceps
+from .adutores            import Adutores
+from .bracos              import Triceps, Antebraco, Biceps
+from .core                import Abdomen, Lombar
+from .costas              import Costas
+from .flexores_quadril    import FlexoresDoQuadril
+from .gluteo              import Gluteo
+from .manguito            import Manguito
+from .panturrilha         import Panturrilha
+from .peito               import Peito, Ombro
+from .posterior           import PosteriorCoxa
+from .quadriceps          import Quadriceps
 
 
 __all__ = [
