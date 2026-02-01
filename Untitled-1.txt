@@ -1,0 +1,31 @@
+treino a:
+
+Dips
+Lat Pullover Machine
+Leg Extension
+RDL
+Triceps Pulldown
+
+treino b:
+
+Crucifixo Máquina
+Barra Fixa
+Back Extension
+Cable Curl
+Abdominal Infra
+
+treino c:
+
+Crossover
+Lat Pulldown Machine
+Cadeira Flexora
+Panturrilha Leg Press
+Leg Press
+
+treino d:
+
+Crucifixo Máquina
+Lat Pulldown Machine
+Sissy Squat
+Ombro
+Abdominal Máquina
