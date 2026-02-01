@@ -1,6 +1,6 @@
 import dataclasses
 
-from Class_corpo import Corpo
+from corpo import Corpo
 # No final do seu arquivo da classe Corpo, ou onde preferir:
 
 #====

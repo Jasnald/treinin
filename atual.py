@@ -6,26 +6,26 @@ import pprint
 
 import dataclasses
 
-from exercicios_inferiores import (
+from ex_inferiores import (
     RDL,CadeiraFlexora, BackExtension,
     LegExtension,LegPress,SissySquat,
     PanturrilhaLegPress
     )
 
-from exercicios_superiores import (
+from ex_superiores import (
     Dips, Crossover, CrucifixoMaquina,
     LatPulldownMachine,LatPulloverMachine,BarraFixa
     )
 
-from exercicios_bracos import (
+from ex_bracos import (
     CableCurl, RoscaMartelo, TricepsPulldown
     )
 
-from exercicios_core import (
+from ex_core import (
     AbdominalInfra,AbdominalMaquina
 )
 
-from exercicios_ombro import (
+from ex_ombro import (
     ElevacaoLateralMaquina
 )
 # Mapeamento dos exercícios para suas dataclasses
