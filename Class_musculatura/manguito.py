@@ -1,9 +1,10 @@
 import dataclasses
+from ._base import MuscleGroup # Import the new base
 
 @dataclasses.dataclass
-class Manguito:
+class Manguito(MuscleGroup):
     # Simples (séries)
-    manguito:       float = 0.0
+    volume:       float = 0.0
 
     # Músculos do manguito rotador
     supraespinhoso: float = 0.0
@@ -11,15 +12,15 @@ class Manguito:
     redondo_menor:  float = 0.0
     subescapular:   float = 0.0
 
-    def set_manguito_simples(self, manguito):
-        self.manguito = manguito
+    def set_volume(self, volume: float):
+        self.volume = volume
         return self
 
-    def set_manguito_completo(self,
+    def set_distribution(self,
                              supraespinhoso, infraespinhoso, 
                              redondo_menor, subescapular):
-        self.supraespinhoso = supraespinhoso    * self.manguito
-        self.infraespinhoso = infraespinhoso    * self.manguito
-        self.redondo_menor  = redondo_menor     * self.manguito
-        self.subescapular   = subescapular      * self.manguito
+        self.supraespinhoso = supraespinhoso    * self.volume
+        self.infraespinhoso = infraespinhoso    * self.volume
+        self.redondo_menor  = redondo_menor     * self.volume
+        self.subescapular   = subescapular      * self.volume
         return self
