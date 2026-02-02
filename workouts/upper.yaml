@@ -9,11 +9,14 @@ exercicios:
   # --- Costas (2 exercícios) ---
   - nome: BarraFixa
     series: 2
-  - nome: LatPulldownMachine
+  - nome: TrapezioMaquina
     series: 2
 
   # --- Braços (1 de cada) ---
-  - nome: RoscaMartelo  # Ótimo pois pega braquial também
+  - nome: RoscaScott 
     series: 2
   - nome: TricepsPulldown
+    series: 2
+
+  - nome: PanturrilhaLegPress
     series: 2

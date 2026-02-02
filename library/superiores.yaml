@@ -177,3 +177,28 @@ LatPulldownMachine:
       antebraco_extensores: 0.667
       antebraco_fletores: 1.0
       braquiorradial: 0.0
+
+TrapezioMaquina:
+  efficiency:
+    costas: 1.0
+    ombro: 0.4
+    biceps: 0.1 # Leve flexão de braço comum ao puxar de baixo
+  distribution:
+    costas:
+      trapezio_superior: 1.0
+      trapezio_medio: 0.8
+      trapezio_inferior: 0.4
+      # Campos obrigatórios zerados:
+      dorsal_superior: 0.3
+      dorsal_medial: 0.1
+      dorsal_inferior: 0.1
+      redondo_maior: 0.3
+      romboide: 0.5
+    ombro:
+      ombro_anterior: 0.4
+      ombro_medial: 0.4
+      ombro_posterior: 1.0  # Estabilização
+    biceps:
+      biceps_longa: 0.5
+      biceps_curta: 0.5
+      braquial: 1.0

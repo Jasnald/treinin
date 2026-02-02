@@ -22,3 +22,28 @@ ElevacaoLateralMaquina:
       Peito_superior: 0.0
       Peito_medial: 0.0
       Peito_inferior: 0.0
+
+ReverseFly:
+  efficiency:
+    ombro: 1.0
+    costas: 0.8
+    triceps: 0.4
+  distribution:
+    ombro:
+      ombro_posterior: 1.0
+      ombro_medial: 0.4
+      ombro_anterior: 0.0
+    costas:
+      romboide: 1.0
+      trapezio_medio: 1.0
+      trapezio_inferior: 0.6
+      trapezio_superior: 0.3
+      redondo_maior: 0.4
+      dorsal_superior: 0.2
+      # Campos obrigatórios zerados:
+      dorsal_medial: 0.0
+      dorsal_inferior: 0.0
+    triceps:
+      triceps_curta: 1.0
+      triceps_medial: 1.0
+      triceps_longa: 0.2

@@ -1,5 +1,8 @@
 treino: "Lower (Fim de Semana)"
 exercicios:
+  # --- Panturrilha (1 exercício) ---
+  - nome: PanturrilhaLegPress
+    series: 2
   # --- Quadríceps (2 exercícios) ---
   - nome: AgachoPendulo
     series: 2
@@ -13,7 +16,5 @@ exercicios:
     series: 2
 
   # --- Acessórios (Pantu e Core) ---
-  - nome: PanturrilhaLegPress
-    series: 2
   - nome: AbdominalInfra
     series: 2

@@ -131,20 +131,6 @@ PanturrilhaLegPress:
       gastrocnemio_laterial: 0.8
       soleo: 0.45
 
-AgachoPendulo:
-  efficiency:
-    quadriceps: 1.0
-    gluteo: 0.8
-  distribution:
-    quadriceps:
-      vasto_lateral: 1.0
-      vasto_medial: 1.0
-      vasto_intermedio: 1.0
-      reto_femoral: 0.3
-    gluteo:
-      gluteo_maximo: 1.0
-      gluteo_medio: 0.2
-      gluteo_minimo: 0.1
 
 FlexaoNordica:
   efficiency:
@@ -161,13 +147,44 @@ FlexaoNordica:
       gluteo_medio: 0.0
       gluteo_minimo: 0.0
 
+AgachoPendulo:
+  efficiency:
+    quadriceps: 1.0
+    gluteo: 0.8
+    adutores: 0.7       # Aumentado: Agachamento profundo ativa muito o Adutor Magno
+  distribution:
+    quadriceps:
+      vasto_lateral: 1.0
+      vasto_medial: 1.0
+      vasto_intermedio: 1.0
+      reto_femoral: 0.3
+    gluteo:
+      gluteo_maximo: 1.0
+      gluteo_medio: 0.2
+      gluteo_minimo: 0.1
+    adutores:
+      adutor_magnus: 1.0    # O "quarto isquiotibial", trabalha muito na saída do buraco
+      adutor_longus: 0.3
+      adutor_brevis: 0.2
+      gracilis: 0.1
+
 MesaFlexora:
   efficiency:
     posteriorcoxa: 1.0
     panturrilha: 0.25
+    adutores: 0.2         # O Grácil cruza o joelho e ajuda na flexão
   distribution:
     posteriorcoxa:
-      semitendinoso: 1.0
-      semimembranoso: 1.0
-      biceps_femoris_longa: 0.8  # CORRIGIDO
-      biceps_femoris_curta: 0.8  # CORRIGIDO
+      semitendinoso: 1.0        # Pés juntos/rotação interna foca nesses dois
+      semimembranoso: 1.0       # Pés juntos/rotação interna foca nesses dois
+      biceps_femoris_longa: 0.6 # Reduzido (trabalha mais com pés afastados/rot. externa)
+      biceps_femoris_curta: 0.6 # Reduzido
+    panturrilha:
+      gastrocnemio_medial: 1.0
+      gastrocnemio_laterial: 1.0
+      soleo: 0.0
+    adutores:
+      gracilis: 1.0       # Único adutor que faz flexão de joelho
+      adutor_magnus: 0.0
+      adutor_longus: 0.0
+      adutor_brevis: 0.0
