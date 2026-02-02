@@ -4,12 +4,12 @@ CableCurl:
     antebraco: 0.4
   distribution:
     biceps:
-      biceps_longa: 0.4
-      biceps_curta: 0.4
-      braquial: 0.2
+      biceps_longa: 1
+      biceps_curta: 1
+      braquial: 0.8
     antebraco:
-      braquiorradial: 0.6
-      antebraco_fletores: 0.2
+      braquiorradial: 1.0
+      antebraco_fletores: 0.4
       antebraco_extensores: 0.2
 
 RoscaMartelo:
@@ -18,13 +18,13 @@ RoscaMartelo:
     antebraco: 0.8
   distribution:
     biceps:
-      biceps_longa: 0.45
-      biceps_curta: 0.25
-      braquial: 0.30
+      biceps_longa: 1.0
+      biceps_curta: 1.0
+      braquial: 0.8
     antebraco:
-      braquiorradial: 0.80
-      antebraco_fletores: 0.10
-      antebraco_extensores: 0.10
+      braquiorradial: 1.00
+      antebraco_fletores: 0.40
+      antebraco_extensores: 0.20
 
 TricepsPulldown:
   efficiency:
@@ -32,13 +32,13 @@ TricepsPulldown:
     ombro: 0.1
   distribution:
     triceps:
-      triceps_longa: 0.40
-      triceps_medial: 0.35
-      triceps_curta: 0.25
+      triceps_longa: 1
+      triceps_medial: 0.8
+      triceps_curta: 0.8
     ombro:
-      ombro_anterior: 0.4
-      ombro_medial: 0.3
-      ombro_posterior: 0.2
+      ombro_anterior: 1.0
+      ombro_medial: 0.8
+      ombro_posterior: 0.8
 
 RoscaScott:
   efficiency:
