@@ -1,0 +1,19 @@
+treino: "Upper (Fim de Semana)"
+exercicios:
+  # --- Peito (2 exercícios) ---
+  - nome: SupinoInclinado
+    series: 2
+  - nome: CrucifixoMaquina
+    series: 2
+
+  # --- Costas (2 exercícios) ---
+  - nome: BarraFixa
+    series: 2
+  - nome: LatPulldownMachine
+    series: 2
+
+  # --- Braços (1 de cada) ---
+  - nome: RoscaMartelo  # Ótimo pois pega braquial também
+    series: 2
+  - nome: TricepsPulldown
+    series: 2

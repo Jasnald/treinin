@@ -36,9 +36,9 @@ TricepsPulldown:
       triceps_medial: 0.8
       triceps_curta: 0.8
     ombro:
-      ombro_anterior: 1.0
-      ombro_medial: 0.8
-      ombro_posterior: 0.8
+      ombro_anterior: 0.0   # CORRIGIDO: Antagonista
+      ombro_medial: 0.2
+      ombro_posterior: 1.0  # Estabilizador real
 
 RoscaScott:
   efficiency:
@@ -51,7 +51,7 @@ RoscaScott:
 
 RoscaInversa:
   efficiency:
-    biceps: 1.0
+    biceps: 0.6
     antebraco: 1.0
   distribution:
     biceps:

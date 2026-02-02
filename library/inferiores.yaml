@@ -42,7 +42,7 @@ CadeiraFlexora:
     panturrilha:
       gastrocnemio_medial: 1.0
       gastrocnemio_laterial: 1.0
-      soleo: 0.9
+      soleo: 0.0
 
 BackExtension:
   efficiency:
