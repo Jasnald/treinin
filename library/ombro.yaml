@@ -1,0 +1,19 @@
+ElevacaoLateralMaquina:
+  efficiency:
+    ombro: 1.0
+    costas: 0.2  # Trapézio
+    peito: 0.2   # Serrátil
+  distribution:
+    ombro:
+      ombro_anterior: 0.15
+      ombro_medial: 0.70
+      ombro_posterior: 0.15
+    costas:
+      # Trapézio (Repassando seus dados antigos)
+      trapezio_superior: 0.60
+      trapezio_medio: 0.30
+      trapezio_inferior: 0.10
+      # Zeros implícitos para o resto
+    peito:
+      # Serrátil é o único campo preenchido aqui
+      Serratil: 1.0

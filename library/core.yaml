@@ -1,0 +1,24 @@
+AbdominalMaquina:
+  efficiency:
+    abdomen: 1.0
+  distribution:
+    abdomen:
+      reto_abdominal_superior: 0.50
+      reto_abdominal_inferior: 0.333
+      obliquo_externo: 0.092
+      obliquo_interno: 0.075
+
+AbdominalInfra:
+  efficiency:
+    abdomen: 1.0
+    flexores_do_quadril: 0.4  # Era 4 (vs 10 abdomen)
+  distribution:
+    abdomen:
+      reto_abdominal_inferior: 0.583
+      reto_abdominal_superior: 0.250
+      obliquo_externo: 0.083
+      obliquo_interno: 0.084
+    flexores_do_quadril:
+      iliopsoas: 0.50
+      reto_femoral: 0.30
+      sartorio: 0.20
