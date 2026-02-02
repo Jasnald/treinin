@@ -1,0 +1,14 @@
+treino: Fullbody 1
+exercicios:
+  - nome: CrucifixoMaquina  # Tem que ser igual ao nome na library
+    series: 2
+  - nome: BarraFixa
+    series: 2
+  - nome: LegExtension
+    series: 2
+  - nome: MesaFlexora
+    series: 2
+  - nome: RoscaScott
+    series: 2
+  - nome: RoscaInversa
+    series: 2

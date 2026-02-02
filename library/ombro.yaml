@@ -9,11 +9,22 @@ ElevacaoLateralMaquina:
       ombro_medial: 1.0
       ombro_posterior: 0.214
     costas:
-      # Trapézio (Repassando seus dados antigos)
+      # Trapézio (O foco do exercício)
       trapezio_superior: 1.0
       trapezio_medio: 0.5
       trapezio_inferior: 0.167
-      # Zeros implícitos para o resto
+      
+      # Zeros Obrigatórios (O Python exige que eles existam)
+      dorsal_superior: 0.0
+      dorsal_medial: 0.0
+      dorsal_inferior: 0.0
+      redondo_maior: 0.0
+      romboide: 0.0
+      
     peito:
       # Serrátil é o único campo preenchido aqui
+      # Mas precisamos preencher o resto com 0.0 se a classe Peito exigir
       Serratil: 1.0
+      Peito_superior: 0.0
+      Peito_medial: 0.0
+      Peito_inferior: 0.0

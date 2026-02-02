@@ -1,56 +1,76 @@
+import yaml
 import dataclasses
 from collections import defaultdict
+from pathlib import Path
 
-# Importa os arquivos de treino que criamos
-import fb1
-import fb2
+# Importa o carregador que criamos no passo 1
+from loader import carregar_biblioteca
 
-def calcular_volume_semanal():
-    # ==========================================================================
-    # 1. DEFINA SUA ROTINA AQUI
-    # Basta repetir os módulos na lista quantas vezes fizer na semana.
-    # ==========================================================================
-    semana = [
-        ("Fullbody 1", fb1),
-        ("Fullbody 2", fb2),
-        ("Fullbody 1", fb1),
-        ("Fullbody 2", fb2),
-    ]
+def calcular_volume_yaml(lista_treinos):
+    # 1. Carrega toda a biomecânica (YAML -> Objetos)
+    BIBLIOTECA = carregar_biblioteca()
     
-    # Acumuladores
     volume_total = defaultdict(float)
     
-    print(f"{'TREINO':<12} | {'EXERCÍCIO':<20} | {'GRUPOS ATIVADOS (Séries)'}")
-    print("-" * 75)
+    print(f"{'TREINO':<15} | {'EXERCÍCIO':<20} | {'SÉRIES':<6} | {'SÉRIES VÁLIDAS (Efetivas)'}")
+    print("-" * 90)
 
-    for nome_treino, modulo in semana:
-        # Pega o dicionário exportado 'meus_exercicios' de cada arquivo
-        for nome_ex, exercicio in modulo.meus_exercicios.items():
+    for arquivo_treino in lista_treinos:
+        # Lê o arquivo do treino (ex: workouts/fb1.yaml)
+        caminho = Path('workouts') / f"{arquivo_treino}.yaml"
+        
+        if not caminho.exists():
+            print(f"ERRO: Treino '{arquivo_treino}' não encontrado.")
+            continue
             
-            grupos_ativos = []
+        with open(caminho, 'r', encoding='utf-8') as f:
+            dados_treino = yaml.safe_load(f)
             
-            # Varre automaticamente todos os grupos musculares do objeto Corpo
-            for field in dataclasses.fields(exercicio):
-                grupo = getattr(exercicio, field.name)
+        nome_sessao = dados_treino.get('treino', arquivo_treino)
+        
+        for item in dados_treino['exercicios']:
+            nome_ex = item['nome']
+            sets_feitos = item['series']
+            
+            # Busca o objeto na biblioteca carregada
+            exercicio_obj = BIBLIOTECA.get(nome_ex)
+            
+            if not exercicio_obj:
+                print(f"AVISO: '{nome_ex}' não existe nos arquivos da library.")
+                continue
                 
-                # Se o grupo tiver volume > 0, contabiliza
-                # (O 'getattr' garante que funciona pra qualquer músculo que tenha .volume)
+            impacto_visual = []
+
+            # Itera sobre os músculos do objeto (Peito, Costas, etc.)
+            for field in dataclasses.fields(exercicio_obj):
+                grupo = getattr(exercicio_obj, field.name)
+                
+                # Se o exercício ativa esse grupo (volume > 0)
                 if hasattr(grupo, 'volume') and grupo.volume > 0:
-                    volume_total[field.name] += grupo.volume
-                    grupos_ativos.append(f"{field.name}: {grupo.volume:g}")
+                    
+                    # CÁLCULO DE SÉRIES VÁLIDAS:
+                    # Séries Feitas * Eficiência do Exercício
+                    # Ex: 3 séries * 1.0 (Barra) = 3.0 para Costas
+                    # Ex: 3 séries * 0.3 (Barra) = 1.0 para Peito (Serrátil)
+                    volume_gerado = sets_feitos * grupo.volume
+                    
+                    volume_total[field.name] += volume_gerado
+                    
+                    if volume_gerado >= 0.1: # Só mostra se tiver impacto relevante
+                        impacto_visual.append(f"{field.name}: {volume_gerado:.1f}")
 
-            print(f"{nome_treino:<12} | {nome_ex:<20} | {', '.join(grupos_ativos)}")
+            print(f"{nome_sessao:<15} | {nome_ex:<20} | {sets_feitos:<6} | {', '.join(impacto_visual)}")
 
-    # ==========================================================================
-    # RELATÓRIO FINAL
-    # ==========================================================================
+    # === RELATÓRIO FINAL ===
     print("\n" + "="*40)
-    print("VOLUME SEMANAL TOTAL (Séries por Grupo)")
+    print("VOLUME SEMANAL TOTAL (Séries Válidas)")
     print("="*40)
-    
-    # Ordena alfabeticamente para facilitar leitura
     for musculo, total in sorted(volume_total.items()):
-        print(f"{musculo.capitalize():<20}: {total:>5.1f} séries")
+        if total > 0.1:
+            print(f"{musculo.capitalize():<20}: {total:.1f} séries")
 
 if __name__ == "__main__":
-    calcular_volume_semanal()
+    # Defina aqui sua semana (nomes dos arquivos na pasta workouts)
+    minha_semana = ['fb1', 'fb2', 'fb1', 'fb2']
+    
+    calcular_volume_yaml(minha_semana)

@@ -1,26 +1,26 @@
 RDL:
   efficiency:
-    gluteo: 1.0         # Base: 10
-    posteriorcoxa: 0.8  # Era 8
-    lombar: 0.5         # Era 5
-    adutores: 0.1       # Era 1
+    gluteo: 1.0
+    posteriorcoxa: 0.8
+    lombar: 0.5
+    adutores: 0.1
   distribution:
     posteriorcoxa:
       semitendinoso: 1.0
-      semimembranoso: 0.833
-      biceps_femoris_cabeca_longa: 1.0
-      biceps_femoris_cabeca_curta: 0.5
+      semimembranoso: 0.8
+      biceps_femoris_longa: 1.0  # CORRIGIDO (sem _cabeca_)
+      biceps_femoris_curta: 0.5  # CORRIGIDO
     gluteo:
       gluteo_maximo: 1.0
-      gluteo_medio: 0.286
-      gluteo_minimo: 0.143
+      gluteo_medio: 0.3
+      gluteo_minimo: 0.15
     lombar:
-      eretores_da_espinha: 1.0
+      eretores: 1.0              # CORRIGIDO (era eretores_da_espinha)
       multifidus: 0.25
       quadrado_lombar: 0.0
     adutores:
       adutor_magnus: 1.0
-      adutor_longus: 0.333
+      adutor_longus: 0.3
       adutor_brevis: 0.0
       gracilis: 0.0
 
@@ -32,38 +32,37 @@ CadeiraFlexora:
   distribution:
     posteriorcoxa:
       semitendinoso: 1.0
-      semimembranoso: 0.857
-      biceps_femoris_cabeca_longa: 0.714
-      biceps_femoris_cabeca_curta: 0.286
+      semimembranoso: 0.9
+      biceps_femoris_longa: 0.7  # CORRIGIDO
+      biceps_femoris_curta: 0.3  # CORRIGIDO
     gluteo:
       gluteo_maximo: 1.0
-      gluteo_medio: 0.188
-      gluteo_minimo: 0.063
+      gluteo_medio: 0.2
+      gluteo_minimo: 0.1
     panturrilha:
-      # Dividido proporcionalmente em séries válidas
       gastrocnemio_medial: 1.0
       gastrocnemio_laterial: 1.0
-      soleo: 0.857
+      soleo: 0.9
 
 BackExtension:
   efficiency:
-    gluteo: 1.0         # Base: 10
-    lombar: 0.8         # Era 8
-    posteriorcoxa: 0.6  # Era 6
+    gluteo: 1.0
+    lombar: 0.8
+    posteriorcoxa: 0.6
   distribution:
     lombar:
-      eretores_da_espinha: 1.0
+      eretores: 1.0              # CORRIGIDO
       multifidus: 0.25
       quadrado_lombar: 0.0
     gluteo:
       gluteo_maximo: 1.0
-      gluteo_medio: 0.24
-      gluteo_minimo: 0.093
+      gluteo_medio: 0.25
+      gluteo_minimo: 0.1
     posteriorcoxa:
       semitendinoso: 1.0
       semimembranoso: 1.0
-      biceps_femoris_cabeca_longa: 0.833
-      biceps_femoris_cabeca_curta: 0.5
+      biceps_femoris_longa: 0.8  # CORRIGIDO
+      biceps_femoris_curta: 0.5  # CORRIGIDO
 
 LegPress:
   efficiency:
@@ -80,17 +79,17 @@ LegPress:
     gluteo:
       gluteo_maximo: 1.0
       gluteo_medio: 0.5
-      gluteo_minimo: 0.167
+      gluteo_minimo: 0.2
     adutores:
       adutor_magnus: 1.0
-      adutor_longus: 0.875
-      adutor_brevis: 0.375
+      adutor_longus: 0.9
+      adutor_brevis: 0.4
       gracilis: 0.25
     posteriorcoxa:
       semitendinoso: 1.0
       semimembranoso: 1.0
-      biceps_femoris_cabeca_longa: 1.0
-      biceps_femoris_cabeca_curta: 1.0
+      biceps_femoris_longa: 1.0  # CORRIGIDO
+      biceps_femoris_curta: 1.0  # CORRIGIDO
 
 SissySquat:
   efficiency:
@@ -105,12 +104,12 @@ SissySquat:
       vasto_intermedio: 0.5
     gluteo:
       gluteo_maximo: 1.0
-      gluteo_medio: 0.286
-      gluteo_minimo: 0.143
+      gluteo_medio: 0.3
+      gluteo_minimo: 0.15
     adutores:
       adutor_magnus: 1.0
-      adutor_longus: 0.778
-      adutor_brevis: 0.444
+      adutor_longus: 0.8
+      adutor_brevis: 0.4
       gracilis: 0.0
 
 LegExtension:
@@ -129,9 +128,8 @@ PanturrilhaLegPress:
   distribution:
     panturrilha:
       gastrocnemio_medial: 1.0
-      # Mantida a grafia 'laterial' para compatibilidade com o teu ficheiro Panturrilha.py
-      gastrocnemio_laterial: 0.778
-      soleo: 0.444
+      gastrocnemio_laterial: 0.8
+      soleo: 0.45
 
 AgachoPendulo:
   efficiency:
@@ -142,22 +140,22 @@ AgachoPendulo:
       vasto_lateral: 1.0
       vasto_medial: 1.0
       vasto_intermedio: 1.0
-      reto_femoral: 0.333
+      reto_femoral: 0.3
     gluteo:
       gluteo_maximo: 1.0
-      gluteo_medio: 0.188
-      gluteo_minimo: 0.063
+      gluteo_medio: 0.2
+      gluteo_minimo: 0.1
 
 FlexaoNordica:
   efficiency:
     posteriorcoxa: 1.0
-    gluteo: 0.25      # Base: 0.5 para 2 series
+    gluteo: 0.25
   distribution:
     posteriorcoxa:
       semitendinoso: 1.0
       semimembranoso: 0.75
-      biceps_femoris_longa: 0.5
-      biceps_femoris_curta: 0.25
+      biceps_femoris_longa: 0.5  # CORRIGIDO
+      biceps_femoris_curta: 0.25 # CORRIGIDO
     gluteo:
       gluteo_maximo: 1.0
       gluteo_medio: 0.0
@@ -166,10 +164,10 @@ FlexaoNordica:
 MesaFlexora:
   efficiency:
     posteriorcoxa: 1.0
-    panturrilha: 0.25 # Base: 0.5 para 2 series
+    panturrilha: 0.25
   distribution:
     posteriorcoxa:
       semitendinoso: 1.0
       semimembranoso: 1.0
-      biceps_femoris_longa: 0.8
-      biceps_femoris_curta: 0.8
+      biceps_femoris_longa: 0.8  # CORRIGIDO
+      biceps_femoris_curta: 0.8  # CORRIGIDO
