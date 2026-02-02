@@ -16,13 +16,8 @@ def calcular_volume_yaml(lista_treinos):
     print("-" * 90)
 
     for arquivo_treino in lista_treinos:
-        # Lê o arquivo do treino (ex: workouts/fb1.yaml)
         caminho = Path('workouts') / f"{arquivo_treino}.yaml"
-        
-        if not caminho.exists():
-            print(f"ERRO: Treino '{arquivo_treino}' não encontrado.")
-            continue
-            
+
         with open(caminho, 'r', encoding='utf-8') as f:
             dados_treino = yaml.safe_load(f)
             
@@ -47,17 +42,10 @@ def calcular_volume_yaml(lista_treinos):
                 
                 # Se o exercício ativa esse grupo (volume > 0)
                 if hasattr(grupo, 'volume') and grupo.volume > 0:
-                    
-                    # CÁLCULO DE SÉRIES VÁLIDAS:
-                    # Séries Feitas * Eficiência do Exercício
-                    # Ex: 3 séries * 1.0 (Barra) = 3.0 para Costas
-                    # Ex: 3 séries * 0.3 (Barra) = 1.0 para Peito (Serrátil)
+
                     volume_gerado = sets_feitos * grupo.volume
-                    
                     volume_total[field.name] += volume_gerado
-                    
-                    if volume_gerado >= 0.1: # Só mostra se tiver impacto relevante
-                        impacto_visual.append(f"{field.name}: {volume_gerado:.1f}")
+                    impacto_visual.append(f"{field.name}: {volume_gerado:.1f}")
 
             print(f"{nome_sessao:<15} | {nome_ex:<20} | {sets_feitos:<6} | {', '.join(impacto_visual)}")
 
