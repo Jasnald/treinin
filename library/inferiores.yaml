@@ -136,16 +136,27 @@ FlexaoNordica:
   efficiency:
     posteriorcoxa: 1.0
     gluteo: 0.25
+    panturrilha: 0.4      # Gastrocnêmios trabalham forte na estabilização do joelho
+    adutores: 0.2         # Grácil ajuda na flexão e estabilidade medial
   distribution:
     posteriorcoxa:
       semitendinoso: 1.0
       semimembranoso: 0.75
-      biceps_femoris_longa: 0.5  # CORRIGIDO
-      biceps_femoris_curta: 0.25 # CORRIGIDO
+      biceps_femoris_longa: 0.5
+      biceps_femoris_curta: 0.25
     gluteo:
       gluteo_maximo: 1.0
       gluteo_medio: 0.0
       gluteo_minimo: 0.0
+    panturrilha:
+      gastrocnemio_medial: 1.0   # Cruza o joelho
+      gastrocnemio_laterial: 1.0 # Cruza o joelho
+      soleo: 0.0                 # Não cruza o joelho
+    adutores:
+      gracilis: 1.0              # Único adutor que cruza o joelho (flexor)
+      adutor_magnus: 0.0
+      adutor_longus: 0.0
+      adutor_brevis: 0.0
 
 AgachoPendulo:
   efficiency:
