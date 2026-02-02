@@ -58,6 +58,26 @@ CrucifixoMaquina:
       biceps_curta: 0.5
       braquial: 0.0
 
+SupinoInclinado:
+  efficiency:
+    peito: 1.0          # Base: 2
+    ombro: 0.75         # Base: 1.5
+    triceps: 0.5        # Base: 1
+  distribution:
+    peito:
+      Peito_superior: 0.7
+      Peito_medial: 0.2
+      Peito_inferior: 0.1
+      Serratil: 0.0
+    ombro:
+      ombro_anterior: 0.8
+      ombro_medial: 0.2
+      ombro_posterior: 0.0
+    triceps:
+      triceps_curta: 0.4
+      triceps_medial: 0.4
+      triceps_longa: 0.2
+
 BarraFixa:
   efficiency:
     costas: 1.0

@@ -132,3 +132,44 @@ PanturrilhaLegPress:
       # Mantida a grafia 'laterial' para compatibilidade com o teu ficheiro Panturrilha.py
       gastrocnemio_laterial: 0.35
       soleo: 0.20
+
+AgachoPendulo:
+  efficiency:
+    quadriceps: 1.0
+    gluteo: 0.8
+  distribution:
+    quadriceps:
+      vasto_lateral: 0.3
+      vasto_medial: 0.3
+      vasto_intermedio: 0.3
+      reto_femoral: 0.1
+    gluteo:
+      gluteo_maximo: 0.8
+      gluteo_medio: 0.15
+      gluteo_minimo: 0.05
+
+FlexaoNordica:
+  efficiency:
+    posteriorcoxa: 1.0
+    gluteo: 0.25      # Base: 0.5 para 2 series
+  distribution:
+    posteriorcoxa:
+      semitendinoso: 0.4
+      semimembranoso: 0.3
+      biceps_femoris_longa: 0.2
+      biceps_femoris_curta: 0.1
+    gluteo:
+      gluteo_maximo: 1.0
+      gluteo_medio: 0.0
+      gluteo_minimo: 0.0
+
+MesaFlexora:
+  efficiency:
+    posteriorcoxa: 1.0
+    panturrilha: 0.25 # Base: 0.5 para 2 series
+  distribution:
+    posteriorcoxa:
+      semitendinoso: 1.0
+      semimembranoso: 1.0
+      biceps_femoris_longa: 0.8
+      biceps_femoris_curta: 0.8

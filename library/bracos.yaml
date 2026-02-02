@@ -39,3 +39,26 @@ TricepsPulldown:
       ombro_anterior: 0.4
       ombro_medial: 0.3
       ombro_posterior: 0.2
+
+RoscaScott:
+  efficiency:
+    biceps: 1.0
+  distribution:
+    biceps:
+      biceps_curta: 1.0
+      braquial: 0.8
+      biceps_longa: 0.4  # Menor ativação (insuficiência ativa)
+
+RoscaInversa:
+  efficiency:
+    biceps: 1.0
+    antebraco: 1.0
+  distribution:
+    biceps:
+      braquial: 1.0
+      biceps_longa: 0.2
+      biceps_curta: 0.2
+    antebraco:
+      braquiorradial: 1.0
+      antebraco_extensores: 0.8
+      antebraco_fletores: 0.0
