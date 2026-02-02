@@ -39,25 +39,22 @@ class Corpo:
     flexores_do_quadril: FlexoresDoQuadril = fac(FlexoresDoQuadril)
     
     def set_corpo_simples(self, **volumes):
-        """Assume que todos os métodos seguem padrão set_{musculo}_simples"""
-        for musculo, volume in volumes.items():
-            if hasattr(self, musculo):
-                grupo = getattr(self, musculo)
-                metodo_nome = f'set_{musculo}_simples'
-                if hasattr(grupo, metodo_nome):
-                    metodo = getattr(grupo, metodo_nome)
-                    metodo(volume)
-        return self
-    
-    def set_corpo_completo(self, **volumes):
-        """Assume que todos os métodos seguem padrão set_{musculo}_simples"""
-        for musculo, detalhes in volumes.items():
-            if hasattr(self, musculo):
-                grupo = getattr(self, musculo)
-                metodo_nome = f'set_{musculo}_completo'
-                if hasattr(grupo, metodo_nome):
-                    metodo = getattr(grupo, metodo_nome)
-                    metodo(**detalhes)
+            for muscle_name, series in volumes.items():
+                if hasattr(self, muscle_name):
+                    grupo = getattr(self, muscle_name)
+                    # CHAMADA PADRONIZADA (Sem string mágica)
+                    if isinstance(grupo, MuscleGroup):
+                        grupo.set_volume(series)
+            return self
+
+    def set_corpo_completo(self, **config):
+        for muscle_name, details in config.items():
+            if hasattr(self, muscle_name):
+                grupo = getattr(self, muscle_name)
+                # CHAMADA PADRONIZADA
+                if isinstance(grupo, MuscleGroup):
+                    # O **details aqui vai para os argumentos específicos do Peito/Costas
+                    grupo.set_distribution(**details)
         return self
 
 
@@ -116,3 +113,11 @@ class Corpo:
                 partes.append(f"{field.name}:\n{', \n'.join(campos_ativos)}\n")
         
         return "\n".join(partes)
+
+    def criar_exercicio(simples: dict, completo: dict = None):
+        """Cria um exercício já preenchido para economizar linhas."""
+        exercicio = Corpo()
+        exercicio.set_corpo_simples(**simples)
+        if completo:
+            exercicio.set_corpo_completo(**completo)
+        return exercicio

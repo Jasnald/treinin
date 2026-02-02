@@ -11,9 +11,10 @@ from .panturrilha         import Panturrilha
 from .peito               import Peito, Ombro
 from .posterior           import PosteriorCoxa
 from .quadriceps          import Quadriceps
-
+from ._base               import MuscleGroup
 
 __all__ = [
+    "MuscleGroup",
     "Peito",
     "Costas",
     "Ombro",
