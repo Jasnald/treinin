@@ -114,10 +114,10 @@ class Corpo:
         
         return "\n".join(partes)
 
-    def criar_exercicio(simples: dict, completo: dict = None):
-        """Cria um exercício já preenchido para economizar linhas."""
-        exercicio = Corpo()
-        exercicio.set_corpo_simples(**simples)
-        if completo:
-            exercicio.set_corpo_completo(**completo)
-        return exercicio
+def criar_exercicio(simples: dict, completo: dict = None):
+    """Cria um exercício já preenchido para economizar linhas."""
+    exercicio = Corpo()
+    exercicio.set_corpo_simples(**simples)
+    if completo:
+        exercicio.set_corpo_completo(**completo)
+    return exercicio

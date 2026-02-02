@@ -1,117 +1,56 @@
-# pressupõe que TODAS as suas dataclasses já estão importadas
-# (Dips, LatPulloverMachine, CrucifixoMaquina, etc.)
-
-from collections import defaultdict
-import pprint
-
 import dataclasses
+from collections import defaultdict
 
-from ex_inferiores import (
-    RDL,CadeiraFlexora, BackExtension,
-    LegExtension,LegPress,SissySquat,
-    PanturrilhaLegPress
-    )
+# Importa os arquivos de treino que criamos
+import fb1
+import fb2
 
-from ex_superiores import (
-    Dips, Crossover, CrucifixoMaquina,
-    LatPulldownMachine,LatPulloverMachine,BarraFixa
-    )
-
-from ex_bracos import (
-    CableCurl, RoscaMartelo, TricepsPulldown
-    )
-
-from ex_core import (
-    AbdominalInfra,AbdominalMaquina
-)
-
-from ex_ombro import (
-    ElevacaoLateralMaquina
-)
-# Mapeamento dos exercícios para suas dataclasses
-exercicios_map = {
-    # Treino A
-    "Dips": Dips(),
-    "Lat Pullover Machine": LatPulloverMachine(),
-    "Leg Extension": LegExtension(),
-    "RDL": RDL(),
-    "Triceps Pulldown": TricepsPulldown(),
+def calcular_volume_semanal():
+    # ==========================================================================
+    # 1. DEFINA SUA ROTINA AQUI
+    # Basta repetir os módulos na lista quantas vezes fizer na semana.
+    # ==========================================================================
+    semana = [
+        ("Fullbody 1", fb1),
+        ("Fullbody 2", fb2),
+        ("Fullbody 1", fb1),
+        ("Fullbody 2", fb2),
+    ]
     
-    # Treino B
-    "Crucifixo Máquina": CrucifixoMaquina(),
-    "Barra Fixa": BarraFixa(),
-    "Back Extension": BackExtension(),
-    "Cable Curl": CableCurl(),
-    "Abdominal Infra": AbdominalInfra(),
+    # Acumuladores
+    volume_total = defaultdict(float)
     
-    # Treino C
-    "Crossover": Crossover(),
-    "Lat Pulldown Machine": LatPulldownMachine(),
-    "Cadeira Flexora": CadeiraFlexora(),
-    "Panturrilha Leg Press": PanturrilhaLegPress(),
-    "Leg Press": LegPress(),
-    
-    # Treino D
-    # "Crucifixo Máquina": já mapeado acima
-    # "Lat Pulldown Machine": já mapeado acima
-    "Sissy Squat": SissySquat(),
-    "Ombro": ElevacaoLateralMaquina(),  # assumindo que "Ombro" é elevação lateral
-    "Abdominal Máquina": AbdominalMaquina(),
-}
+    print(f"{'TREINO':<12} | {'EXERCÍCIO':<20} | {'GRUPOS ATIVADOS (Séries)'}")
+    print("-" * 75)
 
-# Definição dos treinos
-treinos = {
-    "A": ["Dips", "Lat Pullover Machine", "Leg Extension", "RDL", "Triceps Pulldown"],
-    "B": ["Crucifixo Máquina", "Barra Fixa", "Back Extension", "Cable Curl", "Abdominal Infra"],
-    "C": ["Crossover", "Lat Pulldown Machine", "Cadeira Flexora", "Panturrilha Leg Press", "Leg Press"],
-    "D": ["Crucifixo Máquina", "Lat Pulldown Machine", "Sissy Squat", "Ombro", "Abdominal Máquina"]
-}
-
-
-def calcular_series_semanais(treinos, exercicios_map, series_por_exercicio=3/10):
-    """
-    Calcula o total de séries semanais por grupo muscular
-    """
-    # Dicionário para acumular as séries
-    series_totais = {}
-    
-    # Para cada treino
-    for treino_nome, exercicios in treinos.items():
-        print(f"\n=== TREINO {treino_nome} ===")
-        
-        # Para cada exercício no treino
-        for exercicio in exercicios:
-            if exercicio in exercicios_map:
-                dataclass_exercicio = exercicios_map[exercicio]
+    for nome_treino, modulo in semana:
+        # Pega o dicionário exportado 'meus_exercicios' de cada arquivo
+        for nome_ex, exercicio in modulo.meus_exercicios.items():
+            
+            grupos_ativos = []
+            
+            # Varre automaticamente todos os grupos musculares do objeto Corpo
+            for field in dataclasses.fields(exercicio):
+                grupo = getattr(exercicio, field.name)
                 
-                print(f"{exercicio}:")
-                
-                # Pegar todos os atributos que representam músculos (não são distribuições)
-                for attr_name in dir(dataclass_exercicio):
-                    if not attr_name.startswith('_') and not callable(getattr(dataclass_exercicio, attr_name)):
-                        attr_value = getattr(dataclass_exercicio, attr_name)
-                        
-                        # Só considerar atributos numéricos que não sejam distribuições (que somam 1.0)
-                        if isinstance(attr_value, (int, float)) and attr_value > 1:
-                            series_grupo = attr_value * series_por_exercicio
-                            
-                            if attr_name not in series_totais:
-                                series_totais[attr_name] = 0
-                            series_totais[attr_name] += series_grupo
-                            
-                            print(f"  {attr_name}: {series_grupo} séries")
-            else:
-                print(f"⚠️ Exercício '{exercicio}' não encontrado no mapeamento")
-    
-    # Imprimir totais semanais
-    print("\n" + "="*50)
-    print("SÉRIES SEMANAIS TOTAIS:")
-    print("="*50)
-    
-    for grupo, total in sorted(series_totais.items()):
-        print(f"{grupo.capitalize()}: {total} séries")
-    
-    return series_totais
+                # Se o grupo tiver volume > 0, contabiliza
+                # (O 'getattr' garante que funciona pra qualquer músculo que tenha .volume)
+                if hasattr(grupo, 'volume') and grupo.volume > 0:
+                    volume_total[field.name] += grupo.volume
+                    grupos_ativos.append(f"{field.name}: {grupo.volume:g}")
 
-# Executar o cálculo
-series_semanais = calcular_series_semanais(treinos, exercicios_map)
+            print(f"{nome_treino:<12} | {nome_ex:<20} | {', '.join(grupos_ativos)}")
+
+    # ==========================================================================
+    # RELATÓRIO FINAL
+    # ==========================================================================
+    print("\n" + "="*40)
+    print("VOLUME SEMANAL TOTAL (Séries por Grupo)")
+    print("="*40)
+    
+    # Ordena alfabeticamente para facilitar leitura
+    for musculo, total in sorted(volume_total.items()):
+        print(f"{musculo.capitalize():<20}: {total:>5.1f} séries")
+
+if __name__ == "__main__":
+    calcular_volume_semanal()

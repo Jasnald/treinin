@@ -1,4 +1,4 @@
-from corpo import criar_exercicio
+from corpo import Corpo, criar_exercicio
 
 # ==============================================================================
 # TREINO FULLBODY 1
